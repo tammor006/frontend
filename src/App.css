@@ -12,7 +12,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+:root {
+  --bs-primary: #3778bc;  /* New primary color */
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

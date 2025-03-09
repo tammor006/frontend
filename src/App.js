@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
+import PropertyListings from './pages/PropertyListing';
+import PropertyDetails from './pages/PropertyDetails';
+import MyNavbar from "./components/Navbar";
+import HeaderSection from "./components/NavbarTop";
+import Footer from "./components/Footer";
+import FooterBottom from './components/FooterBottom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Preloader/>
+    <HeaderSection/>
+    <MyNavbar />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+         <Route path="/listings" element={<PropertyListings />} />
+        <Route path="/property" element={<PropertyDetails />} />
+      </Routes>
+    </Router>
+    <Footer />
+    <FooterBottom/>
+    <ScrollToTop/>
+    </>
   );
-}
+};
 
 export default App;
