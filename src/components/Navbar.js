@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container,NavDropdown,Offcanvas,Button } from 'react-bootstrap';
+import { Navbar, Nav, Container,NavDropdown,Offcanvas,Button,Row,Col,NavLink } from 'react-bootstrap';
 import "../style.css";
 import { FaUser,FaPhoneAlt,FaEnvelope } from "react-icons/fa";
-
 const MyNavbar = () => {
-    const [show, setShow] = useState(false);
-
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [openMenu, setOpenMenu] = useState(null); // For first-level categories
@@ -26,19 +24,16 @@ const MyNavbar = () => {
   
  <laptop className="d-laptop">
     
-    <Navbar className="custom-navbar" expand="lg">
-      <Container>
+    <Navbar className=" bg-theme p-0 " expand="lg">
+      <Container className="">
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="menu-btn" />
-        <Navbar.Brand href="/"> <img
-            src="/images/logo.jpg"
-            alt="Logo" className="logo"
-          /></Navbar.Brand>
+        
        
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="/" className="nav-item px-3">Home</Nav.Link>
+          <Nav className="mx-auto">
+            <Nav.Link href="/" className="nav-item px-3 py-3 p-0">Home</Nav.Link>
             {/* Projects Dropdown */}
-            <NavDropdown title="Projects" className="dropdown-custom nav-item px-3">
+            <NavDropdown title="Projects" className="dropdown-custom nav-item px-3 py-3 p-0">
               {/* Sub-dropdown inside Projects */}
               <NavDropdown title="Residential" drop="end" className="dropdown-submenu ">
                 <NavDropdown.Item className="" href="#">Sub Project 1</NavDropdown.Item>
@@ -65,23 +60,55 @@ const MyNavbar = () => {
               </NavDropdown>
             </NavDropdown>
             
-            <Nav.Link className="nav-item px-3" href="#">
+            <Nav.Link className="nav-item px-3 py-3 p-0" href="#">
               Construction
             </Nav.Link>
-            <Nav.Link href="#" className="nav-item px-3">
+            <Nav.Link href="#" className="nav-item px-3 py-3 p-0">
               Contact Us
             </Nav.Link>
-            <Nav.Link href="#" className="nav-item px-3">
+            <Nav.Link href="#" className="nav-item px-3 py-3 p-0">
               About Us
             </Nav.Link>
 
-            <Nav.Link href="#" className="login-btn px-3">
+            <Nav.Link href="#" className="login-btn px-3 py-3 p-0">
               <FaUser className="login-icon" /> Login
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar> 
+    </Navbar>
+     <Container fluid className="px-lg-5 px-0 bg-white d-laptop">
+          <Row>
+          <Col lg={6} xl={6} md={6}>
+          <div className="text-center py-2">
+            <NavLink to="/">
+            <img
+                src="/images/logo.jpg"
+                alt="Logo" className="logo"
+              />
+            </NavLink>
+          </div>
+          </Col>
+            <Col lg={3} xl={3} md={3} className="p-0 br-1">
+            <div className="d-flex py-3 px-4 float-end">
+                      <FaPhoneAlt stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2"  />
+                      <div>
+                        <p className="font-0-size text-black-50">CALL US TODAY</p>
+                        <p className="font-0">+(92-21) 000-000-000</p>
+                      </div>
+                    </div>
+            </Col>
+            <Col lg={3} xl={3} md={3} className="p-0">
+            <div className="d-flex py-3 px-4 float-start ">
+                      <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
+                      <div>
+                        <p className="font-0-size text-black-50">MAIL US TODAY</p>
+                        <p className="font-0">info@gmail.com</p>
+                      </div>
+                    </div>
+            </Col>
+          </Row>
+       </Container> 
  </laptop>
 <mobile className="d-mobile">
       {/* Main Navbar */}
@@ -114,9 +141,9 @@ const MyNavbar = () => {
         <div className="row">
           <div className="col-6 pr-0 br-1">
           <div className="d-flex py-3">
-          <FaPhoneAlt className="font-4 mt-2 mr-2" />
+          <FaPhoneAlt stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
           <div>
-            <p className="font-0">CALL US TODAY</p>
+            <p className="font-0-size text-black-50">CALL US TODAY</p>
             <p className="font-0">+(92-21) 000-000-000</p>
           </div>
         </div>
@@ -124,9 +151,9 @@ const MyNavbar = () => {
           
           <div className="col-6 pr-0">
           <div className="d-flex py-3 ">
-          <FaEnvelope className="font-4 mt-2 mr-2" />
+          <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
           <div>
-            <p className="font-0">MAIL US TODAY</p>
+            <p className="font-0-size text-black-50">MAIL US TODAY</p>
             <p className="font-0">info@gmail.com</p>
           </div>
         </div>

@@ -6,7 +6,6 @@ import Preloader from './components/Preloader';
 import PropertyListings from './pages/PropertyListing';
 import PropertyDetails from './pages/PropertyDetails';
 import MyNavbar from "./components/Navbar";
-import HeaderSection from "./components/NavbarTop";
 import Footer from "./components/Footer";
 import FooterBottom from './components/FooterBottom';
 
@@ -14,7 +13,6 @@ const App = () => {
   return (
     <>
     <Preloader/>
-    <HeaderSection/>
     <MyNavbar />
     <Router>
       <Routes>

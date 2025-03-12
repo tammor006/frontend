@@ -17,6 +17,9 @@
     font-size: 1.2rem;
     margin-top: 20px;
   }
+.font-0-size{
+    font-size: 0.6rem !important;
+}
 .font-0{
     font-size: 0.9rem !important;
 }
@@ -2304,32 +2307,31 @@
   }
   
   .logo {
-    max-height: 80px;
+    max-height: 55px;
   }
   
   /* Navbar Links */
   .nav-item {
-    color: black;
+    color: white;
     font-weight: bold;
-    font-size:18px;
+    font-size:16px;
     transition: 0.3s;
     border-radius: 5px;
   }
    .dropdown-custom a {
-    color: black;
+    color: white !important;
     font-weight: bold;
     transition: 0.3s;
     border-radius: 5px;
+    padding: 0;
   }
   .dropdown-custom a:hover{
-    background-color: #bdd8f1; /* Lighter version of #3778bc */
-    color: #3778bc;
+    color: #bdd8f1;
   }  
   .nav-item:hover,
   .nav-item:focus,
   .nav-item.active {
-    background-color: #bdd8f1; /* Lighter version of #3778bc */
-    color: #3778bc;
+    color: #bdd8f1;
   }
   
   /* Dropdown Menu */
@@ -2353,14 +2355,15 @@
     color: white !important;
     font-weight: bold;
     padding: 16px;
+    font-size: 16px;
   }
   .offcanvas-body{
     background-color: #f7f6f6;;
   }
   
   .dropdown-custom .dropdown-item:hover {
-    background-color: #bdd8f1 !important;
-    color: #3778bc;
+    color: #bdd8f1 !important;
+    background-color: #3778bc;
   }
   .dropdown-submenu {
     position: relative;
@@ -2370,6 +2373,9 @@
   .dropdown-submenu a{
     color: white !important;
     padding: 10px;
+  }
+  .dropdown-submenu a:hover{
+    color: #bdd8f1 !important;
   }
   
   /* Submenu Styling */
@@ -2381,10 +2387,9 @@
   
   /* Login Button */
   .login-btn {
-    background-color: #3778bc;
+    background-color:#bdd8f1 !important;
     color: white !important;
     font-weight: bold;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     transition: 0.3s;
