@@ -66,7 +66,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -81,7 +81,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt="agent-logo"/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt="agent-logo"/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -111,7 +111,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -126,7 +126,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -141,7 +141,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -156,7 +156,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -171,7 +171,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -186,7 +186,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -201,7 +201,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -216,7 +216,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -231,7 +231,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -246,7 +246,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -261,7 +261,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -276,7 +276,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -291,7 +291,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -306,7 +306,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -321,7 +321,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -336,7 +336,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -351,7 +351,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -366,7 +366,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -381,7 +381,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -396,7 +396,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -411,7 +411,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -426,7 +426,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -441,7 +441,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -456,7 +456,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -471,7 +471,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -486,7 +486,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -501,7 +501,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
@@ -516,7 +516,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt=""/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
