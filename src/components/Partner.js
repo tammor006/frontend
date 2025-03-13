@@ -14,7 +14,7 @@ const Partner = () => {
           <Col xs={12} sm={12} lg={12} md={12}>
           <div className="headline-item text-center mt-5">
             <h3>Our
-            <span class="head-red"> Agents</span>
+            <span className="head-red"> Agents</span>
             </h3>
           </div>
           </Col>
@@ -96,7 +96,7 @@ const Partner = () => {
             <SwiperSlide>
                 <NavLink>
                   <div className="agent-home-div">
-                    <img src="/images/FalakNaz-01.jpg" className="agent-home-div-img" alt=""/>
+                    <img src="/images/Domanin-01.jpg" className="agent-home-div-img" alt="agent_logo"/>
                     <div className="agent-home-div-text">
                       <div className="agent-home-div-title">FalakNaz</div>
                         <div className="agent-home-div-label-svg">
