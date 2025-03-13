@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Container,NavDropdown,Offcanvas,Button,Row,Col,NavLink } from 'react-bootstrap';
 import "../style.css";
-import { FaUser,FaPhoneAlt,FaEnvelope } from "react-icons/fa";
+import { FaUser} from "react-icons/fa";
 const MyNavbar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,7 +22,7 @@ const MyNavbar = () => {
   return (
     <>
   
- <laptop className="d-laptop">
+ <div className="d-laptop">
     
     <Navbar className=" bg-theme p-0 " expand="lg">
       <Container className="">
@@ -80,7 +80,7 @@ const MyNavbar = () => {
      <Container fluid className="px-lg-5 px-0 bg-white d-laptop">
           <Row>
           <Col lg={6} xl={6} md={6}>
-          <div className="text-center py-2">
+          <div className="text-center py-3">
             <NavLink to="/">
             <img
                 src="/images/logo.jpg"
@@ -90,18 +90,20 @@ const MyNavbar = () => {
           </div>
           </Col>
             <Col lg={3} xl={3} md={3} className="p-0 br-1">
-            <div className="d-flex py-3 px-4 float-end">
-                      <FaPhoneAlt stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2"  />
-                      <div>
+            <div className="d-flex py-4 px-4 float-end">
+                      {/* <FaPhoneAlt stroke="#FAAF32" fill="#FAAF32" className="font-4 mt-2 mr-2"  /> */}
+                      <img width={35} className="mt-2" height={35} src="/images/iphone.png" alt=""/>
+                      <div className="mt-2">
                         <p className="font-0-size text-black-50">CALL US TODAY</p>
                         <p className="font-0">+(92-21) 000-000-000</p>
                       </div>
                     </div>
             </Col>
             <Col lg={3} xl={3} md={3} className="p-0">
-            <div className="d-flex py-3 px-4 float-start ">
-                      <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
-                      <div>
+            <div className="d-flex py-4 px-4 float-start ">
+              <img className="mr-3 mt-2" width={35} height={35} src="/images/letter.png" alt=""/>
+                      {/* <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-4 mt-2 mr-2" /> */}
+                      <div className="mt-2">
                         <p className="font-0-size text-black-50">MAIL US TODAY</p>
                         <p className="font-0">info@gmail.com</p>
                       </div>
@@ -109,8 +111,8 @@ const MyNavbar = () => {
             </Col>
           </Row>
        </Container> 
- </laptop>
-<mobile className="d-mobile">
+ </div>
+<div className="d-mobile">
       {/* Main Navbar */}
       <Navbar expand="md" className="custom-navbar">
         <Container fluid>
@@ -140,22 +142,22 @@ const MyNavbar = () => {
       <div className="container-fluid px-3">
         <div className="row">
           <div className="col-6 pr-0 br-1">
-          <div className="d-flex py-3">
-          <FaPhoneAlt stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
-          <div>
-            <p className="font-0-size text-black-50">CALL US TODAY</p>
-            <p className="font-0">+(92-21) 000-000-000</p>
-          </div>
-        </div>
+          <div className="d-block py-3 text-center">
+          <img className="mb-2" width={30} src="/images/iphone.png" alt=""/>
+                      
+                        <p className="font-0-size text-black-50">CALL US TODAY</p>
+                        <p className="font-0">+(92-21) 000-000-000</p>
+                      </div>
           </div>
           
           <div className="col-6 pr-0">
-          <div className="d-flex py-3 ">
-          <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-3 mt-2 mr-2" />
-          <div>
-            <p className="font-0-size text-black-50">MAIL US TODAY</p>
-            <p className="font-0">info@gmail.com</p>
-          </div>
+          <div className="d-block py-3 text-center ">
+          
+                      {/* <FaEnvelope stroke="#FAAF32" fill="#FAAF32" className="font-4 mt-2 mr-2" /> */}
+                      <img className="mb-2" width={30} src="/images/letter.png" alt=""/>
+                        <p className="font-0-size text-black-50">MAIL US TODAY</p>
+                        <p className="font-0">info@gmail.com</p>
+                      
         </div>
           </div>
         </div>
@@ -249,7 +251,7 @@ const MyNavbar = () => {
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
-</mobile>
+</div>
 </>
   );
 };

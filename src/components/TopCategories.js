@@ -39,13 +39,13 @@ const TopCategories = () => {
                 slidesPerView:3
               },
               1200:{
-                slidesPerView:4
+                slidesPerView:3
               },
               1500:{
-                slidesPerView:4
+                slidesPerView:3
               },
               1700:{
-                slidesPerView:4
+                slidesPerView:3
               }
             }}
           >

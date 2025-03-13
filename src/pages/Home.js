@@ -1,8 +1,10 @@
 import React from "react";
 import HeroCarousel from "../components/HeroCarousel";
-import TopCategories from "../components/TopCategories";
+import PropertyBrowser from "../components/PropertyBrowser";
 import Partner from "../components/Partner";
 import Feature from "../components/Feature";
+import TopCategories from "../components/TopCategories";
+import ConstructionHome from "../components/ConstructionHome";
 
 const Home = () => {
   return (
@@ -10,7 +12,9 @@ const Home = () => {
     
       <HeroCarousel />
       <TopCategories/>
+      <PropertyBrowser/>
       <Feature/>
+      <ConstructionHome/>
       <Partner/>
     </>
   );
