@@ -29,20 +29,19 @@ const PropertyListings = () => {
 //     return null; // Avoid rendering the component
 // }
   const [currentPage, setCurrentPage] = useState(0);
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewMode, setViewMode] = useState("list"); // "grid" or "list"
 
-//   const filteredProducts = projects.filter(
-//     (product) =>
-//         (selectedCategory === "All" || product.category === selectedCategory) &&
-//         product.name.toLowerCase().includes(searchTerm.toLowerCase())
-// );
+  const filteredProducts = projects.filter(
+    (product) =>
+        (selectedCategory === "All" || product.category === selectedCategory) &&
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
-  // const offset = currentPage * ITEMS_PER_PAGE;
-  const currentItems = projects;
-  // filteredProducts.slice(offset, offset + ITEMS_PER_PAGE);
-  const pageCount = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const offset = currentPage * ITEMS_PER_PAGE;
+  const currentItems = filteredProducts.slice(offset, offset + ITEMS_PER_PAGE);
+  const pageCount = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const totalRecord=projects.length; 
   const startItem = currentPage * ITEMS_PER_PAGE + 1;
   const endItem = Math.min((currentPage + 1) * ITEMS_PER_PAGE, totalRecord);
@@ -216,7 +215,7 @@ const PropertyListings = () => {
         </Row>
             </CardBody>
             <CardFooter className="bg-white">
-            {[projects].length > ITEMS_PER_PAGE && (
+            {filteredProducts.length > ITEMS_PER_PAGE && (
         <ReactPaginate
           previousLabel={"←"}
           nextLabel={"→"}
