@@ -163,7 +163,7 @@ const PropertyListings = () => {
                     </figure>
                 
                 </li>
-                <li className="w-50 w-60 mt-4">
+                <li className="w-50 w-60 mt-2 mt-lg-4 mt-md-3 mt-sm-3">
                   <ul className="px-2">
                     <li>
                     <h5 className="list-view-heading">{product.price}</h5>
