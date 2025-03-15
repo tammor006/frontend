@@ -9,6 +9,7 @@ import MyNavbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FooterBottom from './components/FooterBottom';
 
+
 const App = () => {
   return (
     <>
