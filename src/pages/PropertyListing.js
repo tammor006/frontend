@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import {  FaThLarge, FaBars } from "react-icons/fa";
-import { Container, Row, Col, Button, CardBody,Card, CardFooter, CardHeader,NavLink } from "react-bootstrap";
+import { Container, Row, Col, CardBody,Card, CardFooter, CardHeader,NavLink } from "react-bootstrap";
 import TextTruncate from "../components/TextTruncate";
 const ITEMS_PER_PAGE = 12;
 const projects = [
