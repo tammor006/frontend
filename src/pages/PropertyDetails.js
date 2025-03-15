@@ -105,9 +105,9 @@ const PropertyDetails = () => {
           </div>
           <div className="detail-main text-center py-1 col-xl-5 col-lg-5 col-md-4 col-sm-12 col-12">
             <h1>4&5 Rooms Luxury Apartment</h1>
-            <button class="detail-btn py-1">COMING SOON</button>
+            <button className="detail-btn py-1">COMING SOON</button>
             <h3>Location: Gulshan e Iqbal, Near Mosamiyat</h3>
-            <ul class="text-start detail-point">
+            <ul className="text-start detail-point">
               <li>Safe and secured Boundary wall project</li>
               <li>Safe and secured Boundary wall project</li>
               <li>Safe and secured Boundary wall project</li>
@@ -127,7 +127,7 @@ const PropertyDetails = () => {
               <div className="text-center py-2">
                 <img src="img/profile (1).png" alt="" />
               </div>
-              <h2 class="text-center">Fill The Form Below To Schedule Your Site Tour and Receive Project Details</h2>
+              <h2 className="text-center">Fill The Form Below To Schedule Your Site Tour and Receive Project Details</h2>
               <form className=" py-3">
                 <input type="text" className="form-control py-1 mb-2" id="" placeholder="Name" required />
                 <input type="tel" className="form-control mb-2" id="" placeholder="Email" required />

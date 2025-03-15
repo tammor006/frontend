@@ -13,7 +13,7 @@ const TopCategories = () => {
           <Col xs={12} sm={12} lg={12} md={12}>
           <div className="headline-item text-center mt-5">
             <h3>Most Popular
-            <span class="head-red"> Categories</span>
+            <span className="head-red"> Categories</span>
             </h3>
           </div>
           </Col>

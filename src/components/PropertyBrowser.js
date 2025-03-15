@@ -255,7 +255,7 @@ const PropertyBrowser = () => {
         <Col xs={12} sm={12} lg={12} md={12}>
           <div className="headline-item text-center mt-5">
             <h3>Browse
-              <span class="head-red"> Properties</span>
+              <span className="head-red"> Properties</span>
             </h3>
           </div>
         </Col>

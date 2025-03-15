@@ -15,7 +15,7 @@ const Feature = () => {
           <Col xs={12} sm={12} lg={12} md={12}>
           <div className="headline-item text-center mt-5">
             <h3>Top Featured
-            <span class="head-red"> Projects</span>
+            <span className="head-red"> Projects</span>
             </h3>
           </div>
           </Col>
