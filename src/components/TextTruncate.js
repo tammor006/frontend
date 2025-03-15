@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-const TextTruncate = ({ text, wordLimit = 19 }) => {
+const TextTruncate = ({ text, wordLimit = 18 }) => {
 
   // Split text into words and limit it to 'wordLimit'
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
