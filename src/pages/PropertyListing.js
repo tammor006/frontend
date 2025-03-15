@@ -48,6 +48,7 @@ const PropertyListings = () => {
   const recordSummary=startItem +" to " +endItem +" of "+totalRecord +" Properties";
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
