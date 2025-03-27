@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container,NavDropdown,Offcanvas,Button,Row,Col,NavLink } from 'react-bootstrap';
+import { Navbar, Nav, Container,NavDropdown,Offcanvas,Button,Row,Col} from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
 import "../style.css";
 import { FaUser} from "react-icons/fa";
 const MyNavbar = () => {
@@ -31,7 +32,7 @@ const MyNavbar = () => {
        
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link href="/" className="nav-item px-3 py-3 p-0">Home</Nav.Link>
+            <NavLink to="/" className="nav-item px-3 py-3 p-0">Home</NavLink>
             {/* Projects Dropdown */}
             <NavDropdown title="Projects" className="dropdown-custom nav-item px-3 py-3 p-0">
               {/* Sub-dropdown inside Projects */}

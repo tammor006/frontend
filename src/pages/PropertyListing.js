@@ -85,7 +85,7 @@ const PropertyListings = () => {
 
       <Container >
         <Row>
-          <Col xl={9} lg={9} md={12} sm={12} className="px-0">
+          <Col xl={12} lg={12} md={12} sm={12} className="px-0">
           <Card>
             <CardHeader className="bg-white py-0">
               <div style={{float:"left"}}>

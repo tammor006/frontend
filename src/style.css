@@ -3180,11 +3180,13 @@ height:300px
         }
 }
 @media (max-width: 520px) {
+    
     .list-view-heading{
         font-size: 14px;
         font-weight: 600;
         color:black ;
     }
+    
     .hide-grid-button{
         display: none;
     }
@@ -3210,61 +3212,6 @@ height:300px
             width: 45% !important;
           }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Container */
 .product-listing-container {
@@ -3378,4 +3325,143 @@ height:300px
     padding: 1rem;
     font-weight: bold;
   }
+               
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .offer-section {
+    background-color: #f8f8f8;
+    padding: 20px 20px;
+    text-align: center;
+  }
+  
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+  }
+  
+  .offer-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #3778bc;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .offer-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  .offer-icon {
+    margin-bottom: 10px;
+  }
+  
+  .offer-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .offer-text {
+    font-size: 14px;
+    color: #666;
+  }
+  @media (max-width: 520px) {
+    .offer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
+
+
+    .team-section {
+        background-color: #f8f8f8;
+        padding: 20px 20px;
+        text-align: center;
+      }
+      
+      
+      .team-grid {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: 30px auto;
+      }
+      
+      .team-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #3778bc;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .team-box:hover {
+        transform: translateY(-5px);
+      }
+      
+      .team-image {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 3px solid #3778bc;
+        margin-bottom: 10px;
+      }
+      
+      .team-position {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      
+      .team-name {
+        font-size: 14px;
+        color: #777;
+      }
+      
+     
+      
   
