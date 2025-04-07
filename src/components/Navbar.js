@@ -71,9 +71,9 @@ const MyNavbar = () => {
               About Us
             </Nav.Link>
 
-            <Nav.Link href="#" className="login-btn px-3 py-3 p-0">
+            <NavLink to="/login" className="login-btn px-3 py-3 p-0">
               <FaUser className="login-icon" /> Login
-            </Nav.Link>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -131,10 +131,10 @@ const MyNavbar = () => {
           </Navbar.Brand>
 
           {/* Right: Login Button */}
-          <Nav.Link href="#" className="login-icon">
+          <NavLink to="/login" className="login-icon">
             <img src="/images/account.png" alt="login" />
             {/* <FaUser className="login-icon" /> Login */}
-          </Nav.Link>
+          </NavLink>
 
         </Container>
       </Navbar>
