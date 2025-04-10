@@ -5,6 +5,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import MyNavbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import FooterBottom from '../components/FooterBottom';
 
 const PropertyDetails = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -12,7 +15,7 @@ const PropertyDetails = () => {
       <>
       
       
-      
+      <MyNavbar />
       <div className="container-fluid px-3 mt-2 bg-detail">
         <div className="row">
           <div className="col-xl-7 col-lg-7 col-md-5 col-sm-12 col-12">
@@ -146,7 +149,8 @@ const PropertyDetails = () => {
             </div>
           </div>
         </div>
-      </div></>
+      </div><Footer />
+      <FooterBottom /></>
 
     );};
     export default PropertyDetails;

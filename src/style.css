@@ -3465,3 +3465,210 @@ height:300px
      
       
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      .contact-page {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+      }
+      
+      .company-info {
+        border: none;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      
+      .contact-form {
+        border: none;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+      
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: #f0f8ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: #0d6efd;
+        font-size: 1.2rem;
+      }
+      
+      .react-icon {
+        font-size: 1.2rem;
+      }
+      
+      .contact-item h5 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      
+      .contact-item p {
+        color: #666;
+        margin-bottom: 0;
+      }
+      
+      .form-label {
+        font-weight: 500;
+        color: #495057;
+      }
+      
+      .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        padding: 0.5rem 2rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .contact-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .icon-box {
+          margin-bottom: 10px;
+        }
+        
+        .contact-page {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /* Real Estate Specific Styles */
+.real-estate-theme {
+    --primary-color: #2a5f8b;
+    --secondary-color: #e37222;
+  }
+  
+  .real-estate-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('/images/real-estate-hero.jpg') center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .real-estate-hero h1 {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  
+  .real-estate-hero .lead {
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  .value-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  }
+  
+  .divider {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  }
+  
+  .position {
+    color: var(--secondary-color);
+  }
+  
+  .stats-section {
+    background: linear-gradient(135deg, var(--primary-color), #1a3a5a) !important;
+  }
+  
+  .testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    height: 100%;
+  }
+  
+  .quote {
+    font-size: 5rem;
+    color: var(--secondary-color);
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    line-height: 1;
+  }
+  
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .client-info h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .client-info p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .stats {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-top: 10px;
+  }

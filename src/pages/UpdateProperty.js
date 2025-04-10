@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "../components/axiosInstance";
+import { useParams, useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-const AddProperty = () => {
+const EditProperty = () => {
+  const { id } = useParams(); // Get property ID from route
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -15,22 +19,60 @@ const AddProperty = () => {
     address: "",
     area: "",
     images: [],
-    location: [33.6844, 73.0479], // Default location: Islamabad
+    location: [33.6844, 73.0479],
   });
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [files, setFiles] = useState([]); // State for files with previews
 
-  // Dropzone for image uploads
-  const onDrop = (acceptedFiles) => {
-    setFormData({
-      ...formData,
-      images: acceptedFiles,
+  // Fetch property on load
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get(`/properties/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const property = res.data;
+        setFormData({
+          ...property,
+          points: property.points || [],
+          location: property.location?.coordinates || [33.6844, 73.0479],
+          images: property.images || [],
+        });
+
+        // Preload images for preview
+        const preloadedFiles = property.images.map((imageUrl, index) => ({
+          preview: imageUrl,
+          name: `image-${index}`,
+        }));
+        setFiles(preloadedFiles);
+      } catch (error) {
+        console.error("Failed to load property:", error);
+      }
+    };
+
+    fetchProperty();
+  }, [id]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    const newFiles = acceptedFiles.map((file) => {
+      const previewUrl = URL.createObjectURL(file);
+      return { ...file, preview: previewUrl };
     });
-  };
-  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: "image/*", multiple: true });
+    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+  }, []);
 
-  // Address change and geocoding
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "image/*",
+    multiple: true,
+  });
+
   const handleAddressChange = async (e) => {
     const address = e.target.value;
     setFormData({ ...formData, address });
@@ -57,17 +99,15 @@ const AddProperty = () => {
     }
   };
 
-  // Internal component to auto-fly map on location update
   const RecenterMap = ({ lat, lng }) => {
     const map = useMap();
     map.setView([lat, lng], 14);
     return null;
   };
 
-  // Form submission logic
   const handleSubmit = async (e) => {
     e.preventDefault();
-  debugger
+
     const formErrors = {};
     if (!formData.name) formErrors.name = "Name is required";
     if (!formData.description) formErrors.description = "Description is required";
@@ -75,17 +115,16 @@ const AddProperty = () => {
     if (!formData.points.length) formErrors.points = "At least one point is required";
     if (!formData.address) formErrors.address = "Address is required";
     if (!formData.area) formErrors.area = "Area is required";
-    if (!formData.images.length) formErrors.images = "At least one image is required";
-  
+
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return;
     }
-  
+
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-  
+
       const data = new FormData();
       data.append("name", formData.name);
       data.append("description", formData.description);
@@ -94,60 +133,68 @@ const AddProperty = () => {
       data.append("address", formData.address);
       data.append("area", formData.area);
       data.append("location", JSON.stringify(formData.location));
-  
-      // ✅ Append real image files (not preview URLs)
+
       const inputElement = document.querySelector("input[type='file']");
       if (inputElement?.files) {
         for (let i = 0; i < inputElement.files.length; i++) {
           data.append("images", inputElement.files[i]);
         }
       }
-  
-      const response = await axios.post("/properties", data, {
+
+      await axios.put(`/properties/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
-  
-      alert("Property added successfully!");
+
+      alert("Property updated successfully.");
+      navigate("/dashboard/properties");
     } catch (error) {
-      console.error("Add property error:", error);
-      alert("Something went wrong while adding property.");
+      console.error("Update error:", error);
+      alert("Failed to update property.");
     } finally {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <Container>
-      <h1 className="mt-4">Add Property</h1>
+      <h1 className="mt-4">Edit Property</h1>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={6}>
             <Form.Group>
               <Form.Label>Name</Form.Label>
-              <Form.Control name="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+              <Form.Control
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
               {errors.name && <div className="text-danger">{errors.name}</div>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" name="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
+              <Form.Control
+                as="textarea"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              />
               {errors.description && <div className="text-danger">{errors.description}</div>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Price</Form.Label>
-              <Form.Control name="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
+              <Form.Control
+                value={formData.price}
+                onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+              />
               {errors.price && <div className="text-danger">{errors.price}</div>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Points</Form.Label>
               <Form.Control
-                name="points"
                 value={formData.points.join(", ")}
                 onChange={(e) => setFormData({ ...formData, points: e.target.value.split(", ") })}
               />
@@ -156,7 +203,10 @@ const AddProperty = () => {
 
             <Form.Group>
               <Form.Label>Area</Form.Label>
-              <Form.Control name="area" value={formData.area} onChange={(e) => setFormData({ ...formData, area: e.target.value })} />
+              <Form.Control
+                value={formData.area}
+                onChange={(e) => setFormData({ ...formData, area: e.target.value })}
+              />
               {errors.area && <div className="text-danger">{errors.area}</div>}
             </Form.Group>
           </Col>
@@ -166,24 +216,21 @@ const AddProperty = () => {
               <Form.Label>Images</Form.Label>
               <div {...getRootProps()} className="dropzone">
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop images, or click to select files</p>
+                <p>Drag 'n' drop some files here, or click to select files</p>
+                <div className="previews">
+                  {files.map((file) => (
+                    <div key={file.name} className="preview">
+                      <img src={file.preview} alt={file.name} />
+                      <p>{file.name}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              {formData.images.length > 0 && (
-  <div className="images-preview">
-    {formData.images.map((img, i) => {
-      const src = typeof img === "string" ? img : URL.createObjectURL(img);
-      return <img key={i} src={src} alt={`img-${i}`} style={{ width: 100 }} />;
-    })}
-  </div>
-)}
-              {errors.images && <div className="text-danger">{errors.images}</div>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Address</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Search for address"
                 value={formData.address}
                 onChange={handleAddressChange}
               />
@@ -191,22 +238,22 @@ const AddProperty = () => {
             </Form.Group>
 
             <MapContainer center={formData.location} zoom={13} scrollWheelZoom style={{ height: "300px", width: "100%" }}>
-              <TileLayer
-                url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="&copy; OpenStreetMap contributors"
+              <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <Marker
+                position={formData.location}
+                icon={L.icon({ iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png" })}
               />
-              <Marker position={formData.location} icon={L.icon({ iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png" })} />
               <RecenterMap lat={formData.location[0]} lng={formData.location[1]} />
             </MapContainer>
           </Col>
         </Row>
 
-        <Button variant="primary" type="submit" className="mt-4" disabled={isLoading}>
-          {isLoading ? "Saving..." : "Add Property"}
+        <Button type="submit" className="mt-4" disabled={isLoading}>
+          {isLoading ? "Updating..." : "Update Property"}
         </Button>
       </Form>
     </Container>
   );
 };
 
-export default AddProperty;
+export default EditProperty;

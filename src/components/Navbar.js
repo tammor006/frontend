@@ -64,12 +64,12 @@ const MyNavbar = () => {
             <Nav.Link className="nav-item px-3 py-3 p-0" href="#">
               Construction
             </Nav.Link>
-            <Nav.Link href="#" className="nav-item px-3 py-3 p-0">
+            <NavLink to="/ContactUs" className="nav-item px-3 py-3 p-0">
               Contact Us
-            </Nav.Link>
-            <Nav.Link href="#" className="nav-item px-3 py-3 p-0">
+            </NavLink>
+            <NavLink to="/AboutUs" className="nav-item px-3 py-3 p-0">
               About Us
-            </Nav.Link>
+            </NavLink>
 
             <NavLink to="/login" className="login-btn px-3 py-3 p-0">
               <FaUser className="login-icon" /> Login

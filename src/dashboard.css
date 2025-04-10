@@ -1,13 +1,21 @@
-.dashboard-container {
+.admin-container {
     display: flex;
   }
   
-  .dashboard-content {
+  .admin-content {
     margin-left: 250px;
     padding: 20px;
     width: 100%;
   }
-  .sidebar {
+  @media (max-width: 768px) {
+
+    .admin-content {
+      margin-left: 70px;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+  /* .sidebar {
     width: 250px;
     height: 100vh;
     background: #002147;
@@ -43,7 +51,7 @@
   .sidebar ul li a:hover {
     background: #0056b3;
     border-radius: 5px;
-  }
+  } */
   /* Full-page background */
 .login-page {
   height: 100vh;

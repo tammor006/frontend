@@ -5,9 +5,9 @@ const Dashboard = () => {
   const userRole = localStorage.getItem("role"); // Get role from local storage
 
   return (
-    <div className="dashboard-container">
+    <div className="admin-container">
       <Sidebar role={userRole} />
-      <div className="dashboard-content">
+      <div className="admin-content">
         <h1>Welcome to Dashboard</h1>
         <p>Manage your properties and profile here.</p>
       </div>
