@@ -3131,7 +3131,7 @@ background-color: #ffffff;
 }
 .list-view-figure{
 position:relative;
-height:300px
+height:330px
 }
 .list-view-description{
     font-size: 14px;
@@ -3462,8 +3462,74 @@ height:300px
         color: #777;
       }
       
-     
+      .dropzone {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
       
+      .dropzone:hover {
+        border-color: #999;
+      }
+      
+      .image-previews {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .image-preview {
+        position: relative;
+        width: 120px;
+      }
+      
+      .image-preview img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      
+      .image-preview button {
+        width: 100%;
+      }
+     /* Basic styling for react-select */
+.select__control {
+    min-height: 38px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+  }
+  
+  .select__control--is-focused {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .select__multi-value {
+    background-color: #e9ecef;
+    border-radius: 2px;
+  }
+  
+  .select__multi-value__label {
+    color: #495057;
+  }
+  
+  .select__multi-value__remove:hover {
+    background-color: #dee2e6;
+    color: #495057;
+  }
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+    min-height: 200px; /* Ensures minimum height */
+    z-index: 0; /* Fixes potential z-index issues */
+  }
+  
+  .leaflet-control-attribution {
+    font-size: 9px; /* Makes attribution text smaller */
+  }   
   
 
 
@@ -3598,8 +3664,8 @@ height:300px
   }
   
   .real-estate-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('/images/real-estate-hero.jpg') center/cover no-repeat;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('/images/real-estate-hero.jpg') center/cover no-repeat; */
     min-height: 70vh;
     display: flex;
     align-items: center;

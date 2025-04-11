@@ -220,7 +220,7 @@ const validatePassword = (password) => password.length >= 6;
       {loading ? (
         <Spinner animation="border" />
       ) : (
-        <Table striped bordered hover className="mt-4">
+        <Table striped bordered hover responsive className="mt-4">
           <thead>
             <tr>
               <th>Name</th>

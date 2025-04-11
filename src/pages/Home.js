@@ -8,6 +8,7 @@ import TeamSection from "../components/team";
 import MyNavbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FooterBottom from '../components/FooterBottom';
+import MapView from '../components/mapstest';
 
 const Home = () => {
   return (

@@ -36,7 +36,8 @@ const ContactPage = () => {
   };
 
   return (
-    <><MyNavbar /><div className="contact-page container-fluid py-5">
+    <><MyNavbar />
+    <div className="contact-page container-fluid py-5">
       <div className="container">
         <div className="row">
           <div className="col-12 text-center mb-5">

@@ -9,13 +9,15 @@ import Login from "./pages/Login";
 import ManageUsers from "./pages/ManageUsers";
 import AddProperty from "./pages/AddProperty";
 import UpdateProperty from "./pages/UpdateProperty";
+import Categories from './pages/Categories';
 import PropertyLists from "./pages/Property";
 import Dashboard from "./pages/Dashboard";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
-import Sidebar from "./components/dashboard/Sidebar";
 import Profile from "./pages/Profile";
 import "leaflet/dist/leaflet.css";
+import AreaSizes from './pages/AreaSizes';
+import PropertyTypes from './pages/PropertyTypes';
 
 const isAuthenticated = () => {
   return localStorage.getItem("token") ? true : false;
@@ -50,7 +52,7 @@ const App = () => {
       <Routes>  {/* ✅ No need to wrap in <Router> */}
         <Route path="/" element={<Home />} />
         <Route path="/listings" element={<PropertyListings />} />
-        <Route path="/property" element={<PropertyDetails />} />
+        <Route path="/property/:id" element={<PropertyDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -60,6 +62,9 @@ const App = () => {
         <Route path="/properties/add" element={<PrivateRoute element={<AddProperty />} allowedRoles={["admin", "agent"]} />} />
         <Route  path="/properties/update/:id" element={<PrivateRoute element={<UpdateProperty />} allowedRoles={["admin", "agent"]} />} />
         <Route path="/properties" element={<PrivateRoute element={<PropertyLists />} allowedRoles={["admin", "agent"]} />} />
+        <Route path="/categories" element={<PrivateRoute element={<Categories />} allowedRoles={["admin"]} />} />
+        <Route path="/area-sizes" element={<PrivateRoute element={<AreaSizes />} allowedRoles={["admin"]} />} />
+        <Route path="/property-types" element={<PrivateRoute element={<PropertyTypes />} allowedRoles={["admin"]} />} />
       </Routes>
       <ScrollToTop />
     </>

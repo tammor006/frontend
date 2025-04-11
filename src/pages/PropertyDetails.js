@@ -1,156 +1,183 @@
-import React, { useState } from "react";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+// PropertyDetails.jsx
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../components/axiosInstance";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import MyNavbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FooterBottom from '../components/FooterBottom';
+import FooterBottom from "../components/FooterBottom";
+import { FaMapMarkerAlt, FaHome, FaPhoneAlt, FaCheckCircle } from "react-icons/fa";
 
 const PropertyDetails = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    return (
-      <>
-      
-      
-      <MyNavbar />
-      <div className="container-fluid px-3 mt-2 bg-detail">
-        <div className="row">
-          <div className="col-xl-7 col-lg-7 col-md-5 col-sm-12 col-12">
-            <div style={{height:"500px"}}>
-          <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-          height:"80%"
-        }}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
-      >
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg"alt="" />
-        </SwiperSlide>
-      </Swiper>
-      <Swiper
-      style={{height:"20%"}}
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/china-gold.jpg" alt="" />
-        </SwiperSlide>
-      </Swiper>
-      </div>
-          </div>
-          <div className="detail-main text-center py-1 col-xl-5 col-lg-5 col-md-4 col-sm-12 col-12">
-            <h1>4&5 Rooms Luxury Apartment</h1>
-            <button className="detail-btn py-1">COMING SOON</button>
-            <h3>Location: Gulshan e Iqbal, Near Mosamiyat</h3>
-            <ul className="text-start detail-point">
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-              <li>Safe and secured Boundary wall project</li>
-            </ul>
-          </div>
-          <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12 mt-5">
-          <img className="w-100" src="/images/maxresdefault.jpg" alt=""/>
-          </div>
-          <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 mt-5">
-            <div className="form px-4">
-              <div className="text-center py-2">
-                <img src="img/profile (1).png" alt="" />
-              </div>
-              <h2 className="text-center">Fill The Form Below To Schedule Your Site Tour and Receive Project Details</h2>
-              <form className=" py-3">
-                <input type="text" className="form-control py-1 mb-2" id="" placeholder="Name" required />
-                <input type="tel" className="form-control mb-2" id="" placeholder="Email" required />
-                <input type="email" className="form-control mb-2" id="" placeholder="+92" required />
-                <input type="text" className="form-control mb-2" id="" placeholder="Address" required />
-                <div className=" mb-2">
-                  <select className="form-select w-100" id="dropdown-troggle">
-                    <option>Interested In</option>
-                    <option value="1">4 ROOM</option>
-                    <option value="2">5 ROOM</option>
-                  </select>
-                </div>
-                <button type="submit" className="form-btn mt-2 py-2 w-100 bg-theme">YES I AM INTERESTED</button>
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const res = await axios.get(`/properties/public/${id}`);
+        debugger
+        setProperty(res.data);
+      } catch (err) {
+        console.error("Error fetching property details:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperty();
+  }, [id]);
+
+  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (!property) return <div className="text-center py-5 text-danger">Property not found.</div>;
+
+  return (
+    <>
+      <MyNavbar />
+      <div className="container-fluid my-5 px-3">
+        <div className="row align-items-stretch">
+          {/* Image */}
+          <div className="col-md-4 px-0 d-flex">
+            <img
+              src={property.images[0] || "https://via.placeholder.com/400x300"}
+              alt={property.name}
+              className="img-fluid  shadow w-100 object-fit-cover"
+              style={{ height: "100%", minHeight: "300px" }}
+            />
+          </div>
+
+          {/* Property Details */}
+          <div className="col-md-3 bg-white px-0 d-flex">
+            <div className=" shadow px-3 pt-3 pb-0 w-100 d-flex flex-column justify-content-between">
+              <div>
+                <h3 className="mb-2">{property.name}</h3>
+                <h5 className="text-success mb-3">
+                   {property.price.toLocaleString()}
+                </h5>
+                <p className="text-muted">
+                  <FaMapMarkerAlt className="me-1" /> {property.address}
+                </p>
+                <p style={{fontSize:"13px"}}>{property.description}</p>
+
+                <ul className="list-unstyled mt-2">
+  {property.areaSizes?.length > 0 && (
+    <li className="mb-1">
+      <strong>Area Sizes:</strong>{" "}
+      {property.areaSizes.map((size) => (
+        <span key={size._id} className="badge bg-info text-dark me-1">
+          {size.name}
+        </span>
+      ))}
+    </li>
+  )}
+  {property.propertyTypes?.length > 0 && (
+    <li className="mb-1">
+      <strong>Property Types:</strong>{" "}
+      {property.propertyTypes.map((type) => (
+        <span key={type._id} className="badge bg-secondary me-1">
+          {type.name}
+        </span>
+      ))}
+    </li>
+  )}
+ 
+</ul>
+
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2 bg-white px-0 d-flex">
+            <div className="pt-0 pb-3 px-3  w-100 d-flex flex-column justify-content-between">
+              <div>
+              <ul className="list-unstyled">
+  {property.points && (
+    <li>
+      <ul className="mb-0 ps-0 mb-2 mt-lg-3 mt-0">
+        {property.points.map((pt, i) => (
+          <li key={i} style={{fontSize:"12px"}}>
+            <FaCheckCircle className="text-success me-1" />
+            {pt.trim()}
+          </li>
+        ))}
+      </ul>
+    </li>
+  )}
+</ul>
+                </div>
+                </div></div>
+          {/* Contact Form */}
+          <div className="col-md-3 px-0 d-flex ">
+            <div className=" bg-white  shadow p-3 w-100 d-flex flex-column justify-content-between">
+              <h5>Contact Us</h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Your Name</label>
+                  <input type="text" className="form-control" placeholder="Enter name" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Your Email</label>
+                  <input type="email" className="form-control" placeholder="Enter email" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Subject</label>
+                  <input type="email" className="form-control" placeholder="Enter subject" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Message</label>
+                  <textarea className="form-control" rows="3" placeholder="Message" />
+                </div>
+                <button className="btn btn-primary w-100" type="submit">
+                  <FaPhoneAlt className="me-2" />Send Message
+                </button>
               </form>
             </div>
           </div>
         </div>
-      </div><Footer />
-      <FooterBottom /></>
 
-    );};
-    export default PropertyDetails;
+        {/* Map Row */}
+        <div className="row mt-4">
+          <div className="col">
+            <div className="rounded shadow overflow-hidden" style={{ height: "400px" }}>
+              {property.location?.coordinates && (
+                <MapContainer
+                  center={[
+                    property.location.coordinates[0],
+                    property.location.coordinates[1],
+                  ]}
+                  zoom={13}
+                  style={{ height: "100%", width: "100%" }}
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer
+                    url="https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=b10ff82cd89f4664a4fc96b348d503f0"
+                    attribution='&copy; <a href="https://www.geoapify.com/">Geoapify</a> contributors'
+                  />
+                  <Marker
+                    position={[
+                      property.location.coordinates[0],
+                      property.location.coordinates[1],
+                    ]}
+                    icon={L.icon({
+                      iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+                      iconSize: [25, 41],
+                      iconAnchor: [12, 41],
+                    })}
+                  >
+                    <Popup>{property.name}</Popup>
+                  </Marker>
+                </MapContainer>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+      <FooterBottom />
+    </>
+  );
+};
+
+export default PropertyDetails;

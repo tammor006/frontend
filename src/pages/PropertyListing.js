@@ -1,253 +1,374 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import {  FaThLarge, FaBars } from "react-icons/fa";
-import { Container, Row, Col, CardBody,Card, CardFooter, CardHeader,NavLink } from "react-bootstrap";
+import { FaThLarge, FaBars } from "react-icons/fa";
+import { Container, Row, Col, CardBody, Card, CardFooter, CardHeader, NavLink } from "react-bootstrap";
 import TextTruncate from "../components/TextTruncate";
 import MyNavbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FooterBottom from '../components/FooterBottom';
+import axios from "../components/axiosInstance";
+import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
 const ITEMS_PER_PAGE = 12;
-const projects = [
-  {id:1,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:2,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:3,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:4,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:5,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:6,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:7,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:8,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:9,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:10,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:11,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:12,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:13,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:14,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  {id:15,name:"CHINA GOLD PARK MAIL",price:" PKR 19.3 Lakh to 1.22 Crore", category:"Installment",popular:"Hot",image:"/images/china-gold.jpg",description:"Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us  Own A Shop Starting from 1 Crore Get 18 Lac as Rental from us  Get 3 Years Advance Rent from us ",area:" 3 Marla to 12 Marla",address:"Lahore, Main Boulevard Gulberg",subCategory:" Commercial Plots, Residential Plots" },
-  
-];
 const PropertyListings = () => {
-  console.log("Projects Data:", projects); // Debugging
-//   if (!Array.isArray(projects)) {
-//     console.error("Error: `projects` is not an array", projects);
-//     return null; // Avoid rendering the component
-// }
+ 
+  
+  // 3. Fix the marker icons (add this above your component)
+  const [properties, setProperties] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [viewMode, setViewMode] = useState("list"); // "grid" or "list"
+  const [viewMode, setViewMode] = useState("list");
+  useEffect(() => {
+    const updateViewMode = () => {
+      const width = window.innerWidth;
+      if (width >= 992) {
+        setViewMode("list"); // Large screens (lg and up)
+      } else {
+        setViewMode("grid"); // Smaller screens
+      }
+    };
+  
+    updateViewMode(); // Initial check
+  
+    window.addEventListener("resize", updateViewMode); // Handle resize
+  
+    return () => window.removeEventListener("resize", updateViewMode);
+  }, []);
+  
+  // Fetch all data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [propertiesRes, categoriesRes] = await Promise.all([
+          axios.get('/properties/public'),
+          axios.get('/properties/categories/public')
+        ]);
 
-  const filteredProducts = projects.filter(
-    (product) =>
-        (selectedCategory === "All" || product.category === selectedCategory) &&
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-);
+        setProperties(propertiesRes.data);
+        setCategories(categoriesRes.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+        console.error("Failed to fetch data:", err);
+      }
+    };
 
+    fetchData();
+  }, []);
+
+  // Filter properties
+  const filteredProperties = properties.filter(property => {
+    const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                         property.address.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || 
+                          property.category?._id === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Pagination logic
   const offset = currentPage * ITEMS_PER_PAGE;
-  const currentItems = filteredProducts.slice(offset, offset + ITEMS_PER_PAGE);
-  const pageCount = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-  const totalRecord=projects.length; 
-  const startItem = currentPage * ITEMS_PER_PAGE + 1;
-  const endItem = Math.min((currentPage + 1) * ITEMS_PER_PAGE, totalRecord);
-  const recordSummary=startItem +" to " +endItem +" of "+totalRecord +" Properties";
+  const currentItems = filteredProperties.slice(offset, offset + ITEMS_PER_PAGE);
+  const pageCount = Math.ceil(filteredProperties.length / ITEMS_PER_PAGE);
+  const totalRecord = filteredProperties.length;
+  const startItem = offset + 1;
+  const endItem = Math.min(offset + ITEMS_PER_PAGE, totalRecord);
+  const recordSummary = `${startItem} to ${endItem} of ${totalRecord} Properties`;
+
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Format area size display
+  const formatAreaSize = (areaSize) => {
+    if (!areaSize) return "";
+    return areaSize.name;
+  };
+
+  if (loading) return <div className="text-center py-5">Loading properties...</div>;
+  if (error) return <div className="text-center py-5 text-danger">Error: {error}</div>;
+
   return (
-    <><MyNavbar /><div>
-      <div className="headline-item text-center my-5">
-        <h3>
-          Project <span className="head-red">Listings</span>
-        </h3>
-      </div>
+    <>
+      <MyNavbar />
+      <div>
+        <div className="headline-item text-center my-5">
+          <h3>
+            Property <span className="head-red">Listings</span>
+          </h3>
+        </div>
+        
+        <div className="d-flex container-fluid justify-content-between align-items-center my-4 px-5">
+          <input
+            className="p-2 mr-2"
+            type="text"
+            placeholder="Search Properties..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ width: "200px" }}
+          />
 
-      {/* <div className="d-flex justify-content-between align-items-center my-4 px-3">
-      <input
-        className="p-2 mr-2"
-        type="text"
-        placeholder="Search Products..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ width: "200px" }}
-      />
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="p-2 mx-2"
+          >
+            <option value="All">All Categories</option>
+            {categories.map(category => (
+              <option key={category._id} value={category._id}>{category.name}</option>
+            ))}
+          </select>
+        </div>
 
-      <select
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-        className="p-2 mx-2"
-      >
-        <option value="All">All Categories</option>
-        <option value="Installment">Installment</option>
-        <option value="Apartment">Apartment</option>
-        <option value="Commercial">Commercial</option>
-      </select>
+        <Container className="px-lg-5 px-0" fluid>
+          <Row>
+            <Col xl={12} lg={12} md={12} sm={12} className="px-0">
+              <Card className="px-3">
+                <CardHeader className="bg-white py-0">
+                  <div style={{ float: "left" }}>
+                    <div style={{ lineHeight: "3", fontWeight: "600" }}>{recordSummary}</div>
+                  </div>
+                  {window.innerWidth < 992 && (
+  <div className="hide-grid-button" style={{ float: "right" }}>
+    <NavLink 
+      className={`font-4 ${viewMode === "grid" ? "active-fill-view" : "unactive-fill-view"}`} 
+      onClick={() => setViewMode("grid")}
+    >
+      <FaThLarge />
+    </NavLink>
+    <NavLink 
+      className={`ml-2 font-4 ${viewMode === "list" ? "active-fill-view" : "unactive-fill-view"}`} 
+      onClick={() => setViewMode("list")}
+    >
+      <FaBars />
+    </NavLink>
+  </div>
+)}
 
-      
-    </div> */}
-
-      <Container>
-        <Row>
-          <Col xl={12} lg={12} md={12} sm={12} className="px-0">
-            <Card>
-              <CardHeader className="bg-white py-0">
-                <div style={{ float: "left" }}>
-                  <div style={{ lineHeight: "3", fontWeight: "600" }}>{recordSummary}</div>
-                </div>
-                <div className="hide-grid-button" style={{ float: "right" }}>
-                  <NavLink className={` font-4 ${viewMode === "grid" ? "active-fill-view" : "unactive-fill-view"}`} onClick={() => setViewMode("grid")}>
-                    <FaThLarge />
-                  </NavLink>
-                  <NavLink className={`ml-2 font-4 ${viewMode === "list" ? "active-fill-view" : "unactive-fill-view"}`} onClick={() => setViewMode("list")}>
-                    <FaBars />
-                  </NavLink>
-                </div>
-              </CardHeader>
-              <CardBody style={{ background: "#dee2e6" }} className="py-0">
-                <Row className={viewMode === "grid" ? "" : "flex-column"}>
-                  {currentItems.length > 0 ? (
-                    currentItems.map((product) => (
-                      <Col key={product.id} xl={viewMode === "grid" ? 6 : 12} lg={viewMode === "grid" ? 6 : 12} md={12} sm={12} className="px-0 px-lg-3 px-md-3 px-sm-3">
-                        {viewMode === "grid" ?
-                          <NavLink to="/property">
-                            <ul className="list-unstyled p-0 bg-white b-1 grid my-2" style={{ borderRadius: "5px" }}>
-                              <li>
-                                <figure style={{ position: "relative", height: "250px" }}>
-                                  <img className="w-100 h-100 banner-image" src={product.image} style={{ borderRadius: "5px 5px 0px 0px" }} alt="" />
-                                  <span className="top-tag">{product.popular}</span>
-                                  <span className="tag">{product.category}</span>
-
-                                </figure>
-
-                              </li>
-                              <li className="px-3">
-                                <h5 className="project-heading">
-                                  {product.price}
-                                </h5>
-                              </li>
-                              <li className="px-3">
-                                <h5 className="project-heading">
-                                  {product.name}
-                                </h5>
-                              </li>
-                              <li className="px-3 pb-4 mt-2">
-                                <p className="project-explanation">
-                                  {product.description}
-                                </p>
-                              </li>
-                              <li className=" py-1 d-flex px-3">
-                                <img height={30} width={30} src="/images/property.png" className="" alt='' />
-                                <p className="ml-2 text-black font-0 text-bold icon-line-height">
-                                  {product.subCategory}
-                                </p>
-                              </li>
-                              <li className="py-1 d-flex px-3">
-                                <img height={30} width={30} src="/images/area.png" className="" alt='' />
-                                <p className="ml-2 text-black font-0 text-bold icon-line-height">
-                                  {product.area}
-                                </p>
-                              </li>
-                              <li className=" py-1 pb-3 d-flex px-3">
-                                <img height={30} width={30} src="/images/map.png" className="" alt='' />
-                                <p className="ml-2 text-black font-0 text-bold icon-line-height">
-                                  {product.address}
-                                </p>
-                              </li>
-                            </ul>
-                          </NavLink>
-                          :
-                          <NavLink to="/property">
-                            <ul className="list-unstyled p-0 bg-white b-1 list-view my-2" style={{ borderRadius: "5px" }}>
-                              <li className="w-50 w-40">
-                                <figure className="m-0 list-view-figure">
-                                  <img className="w-100 h-100 list-view-image" src={product.image} alt="" />
-                                  <span className="top-tag">{product.popular}</span>
-                                  <span className="tag">{product.category}</span>
-
-                                </figure>
-
-                              </li>
-                              <li className="w-50 w-60 mt-2 mt-lg-4 mt-md-3 mt-sm-3">
-                                <ul className="px-2">
-                                  <li>
-                                    <h5 className="list-view-heading">{product.price}</h5>
-                                  </li>
-                                  <li>
-                                    <h5 className="list-view-heading">
-                                      {product.name}
-                                    </h5>
-                                  </li>
-                                  <li className="mt-2">
-                                    <TextTruncate text={product.description} className="list-view-description" />
-                                    {/* <p className="list-view-description">
-                              {product.description}
-                            </p> */}
-                                  </li>
-                                  <li className="py-1 d-flex">
-                                    <img src="/images/property.png" className="list-view-icon" alt='' />
-                                    <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
-                                      {product.subCategory}
-                                    </p>
-                                  </li>
-                                  <li className="py-1 d-flex">
-                                    <img src="/images/area.png" className="list-view-icon" alt='' />
-                                    <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
-                                      {product.area}
-                                    </p>
-                                  </li>
-                                  <li className=" py-1 d-flex">
-                                    <img src="/images/map.png" className="list-view-icon" alt='' />
-                                    <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
-                                      {product.address}
-                                    </p>
-                                  </li>
-                                </ul>
-
-                              </li>
-
-                            </ul>
-                          </NavLink>}
-
-
-                      </Col>
-                    ))
-                  ) : (
-                    <div className="no-records">No Records Found</div>
+                </CardHeader>
+                <CardBody style={{ background: "#dee2e6" }} className="py-0">
+                  <Row className={viewMode === "grid" ? "" : "flex-column"}>
+                    {currentItems.length > 0 ? (
+                      currentItems.map((property) => (
+                        <Col 
+                          key={property._id} 
+                          xl={viewMode === "grid" ? 6 : 12} 
+                          lg={viewMode === "grid" ? 6 : 12} 
+                          md={12} 
+                          sm={12} 
+                          className=""
+                        >
+                          <Link to={`/property/${property._id}`}>
+                            {viewMode === "grid" ? (
+                              <GridPropertyCard 
+                                property={property} 
+                                formatAreaSize={formatAreaSize} 
+                              />
+                            ) : (
+                              <ListPropertyCard 
+                                property={property} 
+                                formatAreaSize={formatAreaSize} 
+                              />
+                            )}
+                          </Link>
+                        </Col>
+                      ))
+                    ) : (
+                      <div className="no-records w-100 text-center py-5">No Properties Found</div>
+                    )}
+                  </Row>
+                </CardBody>
+                <CardFooter className="bg-white">
+                  {filteredProperties.length > ITEMS_PER_PAGE && (
+                    <ReactPaginate
+                      previousLabel={"←"}
+                      nextLabel={"→"}
+                      pageCount={pageCount}
+                      onPageChange={handlePageClick}
+                      containerClassName={"pagination"}
+                      pageClassName={"page-item"}
+                      pageLinkClassName={"page-link"}
+                      activeClassName={"active"}
+                      previousClassName={"prev-next"}
+                      nextClassName={"prev-next"}
+                      disabledClassName={"disabled"}
+                    />
                   )}
-
-                </Row>
-              </CardBody>
-              <CardFooter className="bg-white">
-                {filteredProducts.length > ITEMS_PER_PAGE && (
-                  <ReactPaginate
-                    previousLabel={"←"}
-                    nextLabel={"→"}
-                    pageCount={pageCount}
-                    onPageChange={handlePageClick}
-                    containerClassName={"pagination"}
-                    pageClassName={"page-item"}
-                    pageLinkClassName={"page-link"}
-                    activeClassName={"active"}
-                    previousClassName={"prev-next"}
-                    nextClassName={"prev-next"}
-                    disabledClassName={"disabled"} />
-                )}
-              </CardFooter>
-            </Card>
-
-          </Col>
-          <Col xl={3}></Col>
-        </Row>
-      </Container>
-
-
-    </div><Footer />
-    <FooterBottom /></>
+                </CardFooter>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Footer />
+      <FooterBottom />
+    </>
   );
 };
 
+// Grid View Card Component
+const GridPropertyCard = ({ property, formatAreaSize }) => (
+  
+  <ul className="list-unstyled p-0 bg-white b-1 grid my-2" style={{ borderRadius: "5px" }}>
+    <li>
+      <figure style={{ position: "relative", height: "250px" }}>
+        {property.images?.[0] && (
+          <img 
+            className="w-100 h-100 banner-image" 
+            src={property.images[0]} 
+            style={{ borderRadius: "5px 5px 0px 0px", objectFit: "cover" }} 
+            alt={property.name} 
+          />
+        )}
+        {property.status === 'hot' && <span className="top-tag">Hot</span>}
+        {property.category?.name && <span className="tag">{property.category.name}</span>}
+      </figure>
+    </li>
+    <li className="px-3">
+      <h5 className="project-heading">PKR {property.price.toLocaleString()}</h5>
+    </li>
+    <li className="px-3">
+      <h5 className="project-heading">{property.name}</h5>
+    </li>
+    <li className="px-3 pb-2 mt-2">
+    <TextTruncate text={property.description} className="list-view-description" />
+    </li>
+    <li className="py-1 d-flex px-3">
+      <img height={30} width={30} src="/images/property.png" alt="Property Type" />
+      <p className="ml-2 text-black font-0 text-bold icon-line-height">
+        {property.propertyTypes?.map(pt => pt.name).join(", ")}
+      </p>
+    </li>
+    <li className="py-1 d-flex px-3">
+      <img height={30} width={30} src="/images/area.png" alt="Area Size" />
+      <p className="ml-2 text-black font-0 text-bold icon-line-height">
+        {property.areaSizes?.map(formatAreaSize).join(", ")}
+      </p>
+    </li>
+    <li className="py-1 pb-3 d-flex px-3">
+      <img height={30} width={30} src="/images/map.png" alt="Address" />
+      <p className="ml-2 text-black font-0 text-bold icon-line-height">
+        {property.address}
+      </p>
+    </li>
+    
+    {property.location?.coordinates && (
+      
+      <li>
+        <div style={{ height: '200px', width: '100%', marginTop: '15px' }}>   
+        <MapContainer 
+          center={[property.location.coordinates[0], property.location.coordinates[1]]}
+          zoom={13}
+          style={{ height: '100%', width: '100%', borderRadius: '5px' }}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            url="https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=b10ff82cd89f4664a4fc96b348d503f0"
+            attribution='&copy; <a href="https://www.geoapify.com/">Geoapify</a> contributors'
+          />
+          <Marker 
+            position={[property.location.coordinates[0], property.location.coordinates[1]]}
+            icon={L.icon({
+              iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+              iconSize: [25, 41],
+              iconAnchor: [12, 41]
+            })}
+          >
+            <Popup>{property.name}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+      </li>
+      
+    )}
+  </ul>
+);
+
+// List View Card Component
+const ListPropertyCard = ({ property, formatAreaSize }) => (
+  
+  <ul className="list-unstyled p-0 bg-white b-1 list-view my-2" style={{ borderRadius: "5px" }}>
+    <li style={{width:"33.3%"}}>
+      <figure className="m-0 list-view-figure">
+        {property.images?.[0] && (
+          <img 
+            className="w-100 h-100 list-view-image" 
+            src={property.images[0]} 
+            alt={property.name} 
+          />
+        )}
+        {property.status === 'hot' && <span className="top-tag">Hot</span>}
+        {property.category?.name && <span className="tag">{property.category.name}</span>}
+      </figure>
+    </li>
+    <li style={{width:"33.3%"}} className=" mt-2 mt-lg-4 mt-md-3 mt-sm-3">
+      <ul className="px-2">
+        <li>
+          <h5 className="list-view-heading">PKR {property.price.toLocaleString()}</h5>
+        </li>
+        <li>
+          <h5 className="list-view-heading">{property.name}</h5>
+        </li>
+        <li className="my-2">
+          <TextTruncate text={property.description} className="list-view-description" />
+        </li>
+        <li className="py-1 d-flex">
+          <img src="/images/property.png" className="list-view-icon" alt="Property Type" />
+          <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
+            {property.propertyTypes?.map(pt => pt.name).join(", ")}
+          </p>
+        </li>
+        <li className="py-1 d-flex">
+          <img src="/images/area.png" className="list-view-icon" alt="Area Size" />
+          <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
+            {property.areaSizes?.map(formatAreaSize).join(", ")}
+          </p>
+        </li>
+        <li className="py-1 d-flex">
+          <img src="/images/map.png" className="list-view-icon" alt="Address" />
+          <p className="ml-2 text-black list-view-icon-text text-bold icon-line-height">
+            {property.address}
+          </p>
+        </li>
+      </ul>
+    </li>
+    <li className="" style={{width:"33.3%"}}>
+    {property.location?.coordinates && (
+      
+          <div style={{ height: '330px', width: '100%' }}>   
+        <MapContainer 
+          center={[property.location.coordinates[0], property.location.coordinates[1]]}
+          zoom={13}
+          style={{ height: '100%', width: '100%', borderRadius: '5px' }}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            url="https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=b10ff82cd89f4664a4fc96b348d503f0"
+            attribution='&copy; <a href="https://www.geoapify.com/">Geoapify</a> contributors'
+          />
+          <Marker 
+            position={[property.location.coordinates[0], property.location.coordinates[1]]}
+            icon={L.icon({
+              iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+              iconSize: [25, 41],
+              iconAnchor: [12, 41]
+            })}
+          >
+            <Popup>{property.name}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+      
+    )}
+    </li>
+  </ul>
+);
+
 export default PropertyListings;
-
-
-
-

@@ -23,7 +23,7 @@ const Sidebar = ({ role }) => {
         <div className="sidebar-content">
           <ul>
             <li>
-              <Link to="/dashboard">
+              <Link to="/">
                 <FaHome className="sidebar-icon" />
                 {!isCollapsed && <span className="sidebar-text">Dashboard</span>}
               </Link>
@@ -40,6 +40,24 @@ const Sidebar = ({ role }) => {
                   <Link to="/properties">
                     <FaBuilding className="sidebar-icon" />
                     {!isCollapsed && <span className="sidebar-text">All Properties</span>}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/area-sizes">
+                    <FaBuilding className="sidebar-icon" />
+                    {!isCollapsed && <span className="sidebar-text">Area Sizes</span>}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/property-types">
+                    <FaBuilding className="sidebar-icon" />
+                    {!isCollapsed && <span className="sidebar-text">Property Types</span>}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/categories">
+                    <FaBuilding className="sidebar-icon" />
+                    {!isCollapsed && <span className="sidebar-text">Categories</span>}
                   </Link>
                 </li>
               </>
